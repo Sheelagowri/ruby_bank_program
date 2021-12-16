@@ -27,8 +27,7 @@ class Bank
     email = gets.chomp.to_s
     puts 'password'
     password = $stdin.noecho(&:gets).chomp
-    @user = User.find_with_password(email, password)
-    if @email == email && @password == password
+    if (@user = User.find_with_password(email, password))
       payment
     else
       puts 'Account does not exit! please check your email or password'
@@ -117,7 +116,7 @@ class Bank
       exit
     else
       puts 'Try again'
-      check_balance_and_history
+      payment
     end
   end
 

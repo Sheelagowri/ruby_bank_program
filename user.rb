@@ -5,7 +5,7 @@ require './account'
 
 # User
 class User
-  @@users = []
+  @users = []
   attr_accessor :email, :password, :account
 
   # keyword params
@@ -18,12 +18,12 @@ class User
   def self.create(email, password)
     user = User.new(email: email, password: password,
                     account: Account.new)
-    @@users << user
+    @users << user
     user
   end
 
   def self.find_with_password(email, password)
-    @@users.detect { |user| user.email == email && user.password == password }
+    @users.detect { |user| user.email == email && user.password == password }
   end
 
   def add_transaction(type, amount)
